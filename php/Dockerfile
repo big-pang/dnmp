@@ -1,7 +1,6 @@
 FROM php:7.3-fpm-alpine
 
 MAINTAINER timestrider
-ENV TZ=Asia/Shanghai
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories;
 

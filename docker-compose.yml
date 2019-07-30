@@ -1,1 +1,8 @@
 version: '2'
+
+
+services:
+  php:
+    build: php
+    ports:
+      - 9000:9000
