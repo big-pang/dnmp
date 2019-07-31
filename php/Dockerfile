@@ -16,12 +16,12 @@ RUN apk update && apk add --no-cache \
         libedit-dev \
         tzdata  \
         curl-dev \
-        $PHPIZE_DEPS \
-        openssl-dev
+        $PHPIZE_DEPS
 
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
+RUN docker-php-ext-configure  gd  --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
+     --with-openssl \
     && docker-php-ext-install gd soap iconv mbstring \
-    pdo pdo_mysql mysqli bz2 xml curl zip ftp opcache pdo_pgsql readline \
+    pdo pdo_mysql mysqli bz2 xml curl zip  opcache pdo_pgsql readline \
     && docker-php-source delete
 
 
@@ -35,7 +35,9 @@ RUN docker-php-ext-enable swoole redis mongodb
 RUN ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ;
 
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-    php composer-setup.php && \
-    php -r "unlink('composer-setup.php');" && \
-    mv composer.phar /usr/local/bin/composer
+RUN php -r "copy('https://getcomposer.org/download/1.8.6/composer.phar', '/usr/local/bin/composer');" \
+    && chmod +x /usr/local/bin/composer \
+    && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+#RUN php composer-setup.php
+#RUN php -r "unlink('composer-setup.php');"
+#RUN mv composer.phar /usr/local/bin/composer
