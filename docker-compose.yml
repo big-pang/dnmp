@@ -6,3 +6,8 @@ services:
     build: php
     ports:
       - 9000:9000
+
+  nginx:
+    build: nginx
+    ports:
+      - 80:80
