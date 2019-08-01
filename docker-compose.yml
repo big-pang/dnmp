@@ -4,9 +4,10 @@ version: '2'
 services:
   php:
     build: php
-#    volumes:
-#      - ./config/php/php.ini:/usr/local/etc/php/php.ini:ro
-#      - ./config/php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+    volumes:
+      - ./www:/var/www/html/:rw
+      - ./config/php/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./config/php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:rw
     ports:
       - 9000:9000
 
