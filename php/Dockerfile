@@ -32,7 +32,7 @@ RUN pecl install swoole && \
 
 RUN docker-php-ext-enable swoole redis mongodb
 
-RUN ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ;
+#RUN ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ;
 
 
 RUN php -r "copy('https://getcomposer.org/download/1.8.6/composer.phar', '/usr/local/bin/composer');" \

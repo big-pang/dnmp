@@ -3,11 +3,15 @@ version: '2'
 
 services:
   php:
+#    image: registry.cn-shanghai.aliyuncs.com/bigpang/dnmp_php
     build: php
     volumes:
       - ./www:/var/www/html/:rw
       - ./config/php/php.ini:/usr/local/etc/php/php.ini:ro
       - ./config/php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+    restart: always
+    environment:
+      TZ: "$TZ"
     ports:
       - 9000:9000
 
@@ -18,8 +22,9 @@ services:
       - ./logs/nginx:/var/log/nginx
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+    restart: always
+    environment:
+      TZ: "$TZ"
     ports:
       - 80:80
       - 443:443
-    environment:
-      TZ: "$TZ"
