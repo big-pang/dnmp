@@ -36,3 +36,9 @@ services:
     environment:
       TZ: "$TZ"
     command: "yarn config set registry http://registry.npm.taobao.org/"
+
+  es:
+    image: elasticsearch:6.5.3
+    ports:
+      - 9200:9200
+      - 9300:9300
