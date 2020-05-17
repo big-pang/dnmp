@@ -1,0 +1,30 @@
+{
+  "database": {
+    "account": {
+      "root": {
+        "user": "root",
+        "password": "root"
+      }
+    },
+    "serverInfo": {
+      "server1": {
+        "write": {
+          "host": "docker.for.mac.host.internal",
+          "port": 3306,
+          "timeout": 2,
+          "account": "root"
+        }
+      }
+    },
+    "databases": {
+      "api_cadkantuwang": {
+        "serverInfo": "server1",
+        "startConns": "swoole_cpu_num()*2",
+        "maxSpareConns": "swoole_cpu_num()*2",
+        "maxSpareExp": 3600,
+        "maxConns": "swoole_cpu_num()*2",
+        "charset": "utf8mb4"
+      }
+    }
+  }
+}

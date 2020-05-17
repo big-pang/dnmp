@@ -1,4 +1,4 @@
-version: '2'
+version: '3.6'
 
 
 services:
@@ -13,6 +13,18 @@ services:
       TZ: "$TZ"
     ports:
       - 9000:9000
+
+  smproxy:
+    image: registry.cn-shanghai.aliyuncs.com/bigpang/dnmp_smproxy
+    volumes:
+      - ./config/php/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./config/smproxy:/usr/local/smproxy/conf:rw
+      - ./logs/smproxy:/usr/local/smproxy/logs:rw
+    restart: always
+    environment:
+      TZ: "$TZ"
+    ports:
+      - 3366:3366
 
   nginx:
     image: nginx
