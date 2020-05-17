@@ -15,7 +15,7 @@ services:
       - 9000:9000
 
   smproxy:
-    image: registry.cn-shanghai.aliyuncs.com/bigpang/dnmp_smproxy
+    image: registry.cn-shanghai.aliyuncs.com/bigpang/smproxy
     volumes:
       - ./config/php/php.ini:/usr/local/etc/php/php.ini:ro
       - ./config/smproxy:/usr/local/smproxy/conf:rw
