@@ -26,7 +26,6 @@ services:
     ports:
       - 3366:3366
 
-
   nginx:
     image: nginx
     volumes:
