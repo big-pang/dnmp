@@ -31,7 +31,7 @@ RUN pecl install swoole && \
     pecl install imagick
 
 
-RUN docker-php-ext-enable swoole redis mongodb
+RUN docker-php-ext-enable swoole redis mongodb imagick
 
 #RUN ln -snf /usr/share/zoneinfo/PRC /etc/localtime && echo PRC > /etc/TZ;
 
