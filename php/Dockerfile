@@ -27,7 +27,8 @@ RUN docker-php-ext-configure  gd  --with-freetype-dir=/usr/lib/ --with-jpeg-dir=
 
 RUN pecl install swoole && \
     pecl install redis && \
-    pecl install mongodb
+    pecl install mongodb && \
+    pecl install imagick
 
 
 RUN docker-php-ext-enable swoole redis mongodb
