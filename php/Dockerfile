@@ -2,7 +2,7 @@ FROM php:7.3-fpm-alpine
 
 MAINTAINER timestrider
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories;
+#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories;
 
 RUN apk update && apk add --no-cache \
         freetype-dev \
