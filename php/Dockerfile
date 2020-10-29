@@ -2,7 +2,7 @@ FROM php:7.3-fpm-alpine
 
 MAINTAINER timestrider
 
-#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories;
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories;
 
 RUN apk update && apk add --no-cache \
         freetype-dev \
@@ -15,18 +15,21 @@ RUN apk update && apk add --no-cache \
         libzip-dev \
         libedit-dev \
         tzdata  \
-        curl-dev
+        curl-dev \
+        $PHPIZE_DEPS \
+        openssl-dev \
+        imagemagick-dev
 
-RUN docker-php-ext-configure  gd  --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
-    && docker-php-ext-install gd soap iconv mbstring \
-    pdo pdo_mysql mysqli bz2 xml curl zip  opcache pdo_pgsql readline \
-    && docker-php-source delete
+RUN docker-php-ext-configure  gd  --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/
+RUN docker-php-ext-install gd soap iconv mbstring \
+    pdo pdo_mysql mysqli bz2 xml curl zip  opcache pdo_pgsql readline
+RUN docker-php-source delete
 
 
-RUN pecl install swoole && \
-    pecl install redis && \
-    pecl install mongodb && \
-    pecl install imagick
+RUN pecl install swoole
+RUN pecl install redis
+RUN pecl install mongodb
+RUN pecl install imagick
 
 
 RUN docker-php-ext-enable swoole redis mongodb imagick
