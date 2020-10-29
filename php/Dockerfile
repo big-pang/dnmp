@@ -15,8 +15,7 @@ RUN apk update && apk add --no-cache \
         libzip-dev \
         libedit-dev \
         tzdata  \
-        curl-dev \
-        $PHPIZE_DEPS
+        curl-dev
 
 RUN docker-php-ext-configure  gd  --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
      --with-openssl \
