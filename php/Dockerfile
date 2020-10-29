@@ -18,7 +18,6 @@ RUN apk update && apk add --no-cache \
         curl-dev
 
 RUN docker-php-ext-configure  gd  --with-freetype-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ \
-     --with-openssl \
     && docker-php-ext-install gd soap iconv mbstring \
     pdo pdo_mysql mysqli bz2 xml curl zip  opcache pdo_pgsql readline \
     && docker-php-source delete
